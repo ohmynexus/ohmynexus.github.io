@@ -3,297 +3,125 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#080b10">
-  <meta name="description" content="Mikasa — personal corner on the internet. Catatan, eksperimen, dan hal-hal yang sedang dibangun.">
+  <meta name="theme-color" content="#f4f1e9">
+  <meta name="description" content="Mikasa — profil singkat, minat, dan ruang personal di internet.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Mikasa — Digital Space">
-  <meta property="og:description" content="Personal corner on the internet. Notes, experiments, and things in progress.">
+  <meta property="og:title" content="Mikasa — Personal Profile">
+  <meta property="og:description" content="A small introduction to Mikasa.">
   <meta property="og:url" content="https://ohmynexus.github.io/">
-  <title>Mikasa — Digital Space</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080b10'/%3E%3Cpath d='M13 46V18h8l11 14 11-14h8v28h-9V31L32 43 22 31v15z' fill='%2363f5e1'/%3E%3C/svg%3E">
+  <title>Mikasa — Personal Profile</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231e2925'/%3E%3Ctext x='32' y='43' font-size='35' text-anchor='middle' fill='%23f4f1e9' font-family='Georgia'%3EM%3C/text%3E%3C/svg%3E">
   <style>
-    :root {
-      color-scheme: dark;
-      --bg: #080b10;
-      --panel: #0e141b;
-      --panel-hi: #111b24;
-      --line: rgba(166, 196, 210, .14);
-      --text: #eef5f8;
-      --muted: #94a5b2;
-      --accent: #63f5e1;
-      --accent-soft: rgba(99, 245, 225, .1);
-      --max: 1120px;
-      --radius: 20px;
-      font-synthesis: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
-    body {
-      margin: 0;
-      min-width: 320px;
-      background:
-        radial-gradient(ellipse at 80% 0%, rgba(26, 104, 111, .14), transparent 34rem),
-        var(--bg);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-    }
-    a { color: inherit; }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-    .skip-link {
-      position: absolute; top: 12px; left: 12px; z-index: 10;
-      transform: translateY(-150%); padding: 10px 14px;
-      border-radius: 10px; background: var(--accent); color: #05100f; font-weight: 800;
-    }
-    .skip-link:focus { transform: translateY(0); }
-    .shell { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
-    .site-header {
-      position: sticky; top: 0; z-index: 5;
-      background: rgba(8, 11, 16, .82);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(18px);
-    }
-    .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 800; letter-spacing: -.035em; }
-    .brand-mark {
-      display: grid; place-items: center; width: 38px; aspect-ratio: 1;
-      border: 1px solid rgba(99,245,225,.4); border-radius: 12px;
-      background: var(--accent-soft); color: var(--accent); font-size: 18px; font-weight: 900;
-    }
-    .brand span:last-child { font-size: 16px; }
-    .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); }
-    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 650; text-decoration: none; transition: color .18s ease; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links .nav-cta { color: var(--accent); padding: 9px 14px; border: 1px solid rgba(99,245,225,.32); border-radius: 999px; }
-    .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 12px; padding: 9px 12px; background: var(--panel); color: var(--text); font: inherit; }
-    .hero { position: relative; isolation: isolate; padding: clamp(76px, 11vw, 142px) 0 88px; overflow: clip; }
-    .hero::after {
-      content: ""; position: absolute; z-index: -1; pointer-events: none;
-      width: 460px; aspect-ratio: 1; top: 45px; right: -130px;
-      border: 1px solid rgba(99,245,225,.12); border-radius: 50%;
-      box-shadow: 0 0 0 46px rgba(99,245,225,.018), 0 0 0 94px rgba(99,245,225,.014);
-    }
-    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); font: 700 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .16em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
-    h1 { max-width: 850px; margin: 22px 0 22px; font-size: clamp(3.25rem, 9vw, 7.2rem); line-height: .99; letter-spacing: -.085em; font-weight: 790; }
-    h1 .accent { color: var(--accent); }
-    .hero-copy { max-width: 570px; color: var(--muted); font-size: clamp(16px, 1.8vw, 19px); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 750; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary { color: #05110f; background: var(--accent); border: 1px solid var(--accent); }
-    .button-secondary { color: var(--text); background: rgba(255,255,255,.025); border: 1px solid var(--line); }
-    .button-secondary:hover { border-color: rgba(99,245,225,.5); }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 44px; color: #738592; font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; }
-    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
-    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px rgba(99,245,225,.45); }
-    .section { padding: 74px 0; border-top: 1px solid var(--line); }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
-    .section-index { margin: 0 0 7px; color: var(--accent); font: 700 11px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .13em; }
-    h2 { margin: 0; font-size: clamp(27px, 4vw, 42px); line-height: 1.12; letter-spacing: -.055em; }
-    .section-intro { max-width: 420px; margin: 0; color: var(--muted); font-size: 14px; }
-    .interest-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .interest-card {
-      min-height: 208px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius);
-      background: linear-gradient(145deg, rgba(17,27,36,.92), rgba(12,17,24,.72));
-    }
-    .card-icon { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 26px; border: 1px solid rgba(99,245,225,.2); border-radius: 14px; background: var(--accent-soft); color: var(--accent); }
-    .card-icon svg { width: 21px; height: 21px; }
-    .interest-card h3 { margin: 0 0 7px; font-size: 17px; letter-spacing: -.025em; }
-    .interest-card p { margin: 0; color: var(--muted); font-size: 13px; }
-    .about-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 8vw, 110px); align-items: start; }
-    .about-copy { color: var(--muted); font-size: 16px; }
-    .about-copy p:first-child { margin-top: 0; }
-    .about-note { margin-top: 22px; padding: 17px 20px; border-left: 2px solid var(--accent); background: var(--accent-soft); color: #c8d8de; font-size: 13px; }
-    .principles { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-    .principles li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 17px 0; border-bottom: 1px solid var(--line); }
-    .principles strong { font-size: 14px; }
-    .principles span { color: var(--muted); font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; text-align: right; }
-    .contact-panel {
-      position: relative; overflow: hidden; padding: clamp(28px, 6vw, 58px);
-      border: 1px solid rgba(99,245,225,.24); border-radius: 26px;
-      background: radial-gradient(ellipse at 100% 0%, rgba(99,245,225,.12), transparent 52%), var(--panel);
-    }
-    .contact-panel h2 { max-width: 650px; font-size: clamp(32px, 6vw, 60px); }
-    .contact-panel p { max-width: 530px; margin: 17px 0 27px; color: var(--muted); }
-    .contact-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-top: 28px; color: #738592; font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
-    footer { padding: 25px 0 34px; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #748591; font-size: 12px; }
-    .footer-inner a { color: var(--muted); text-decoration-color: rgba(148,165,178,.35); text-underline-offset: 4px; }
-    .footer-inner a:hover { color: var(--accent); }
-    @media (max-width: 760px) {
-      .shell { width: min(var(--max), calc(100% - 36px)); }
-      .nav-wrap { min-height: 68px; }
-      .menu-toggle { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
-      .nav-links { display: none; position: absolute; top: calc(100% + 1px); inset-inline: 0; padding: 16px 18px 20px; flex-direction: column; align-items: stretch; gap: 0; background: rgba(8,11,16,.98); border-bottom: 1px solid var(--line); }
-      .nav-links[data-open="true"] { display: flex; }
-      .nav-links a { padding: 13px 8px; }
-      .nav-links .nav-cta { margin-top: 8px; text-align: center; }
-      .hero { padding: 82px 0 70px; }
-      .hero::after { width: 300px; right: -200px; top: 70px; }
-      .hero-meta { gap: 12px 18px; margin-top: 34px; }
-      .section { padding: 58px 0; }
-      .section-heading { display: block; }
-      .section-intro { margin-top: 14px; }
-      .interest-grid { grid-template-columns: 1fr; }
-      .interest-card { min-height: auto; padding: 22px; }
-      .card-icon { margin-bottom: 18px; }
-      .about-layout { grid-template-columns: 1fr; gap: 24px; }
-      .contact-panel { border-radius: 20px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-    }
+    :root{color-scheme:light;--paper:#f4f1e9;--ink:#202a26;--muted:#69736c;--line:#d8d8cc;--accent:#bb4e37;--serif:Georgia,"Times New Roman",serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+    .skip{position:absolute;left:16px;top:12px;z-index:9;transform:translateY(-150%);padding:10px 14px;background:var(--ink);color:var(--paper);border-radius:4px}
+    .skip:focus{transform:none}
+    .wrap{width:min(1040px,calc(100% - 48px));margin:auto}
+    header{border-bottom:1px solid var(--line)}
+    .topbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .wordmark{text-decoration:none;font-weight:800;letter-spacing:-.04em;font-size:17px}
+    .wordmark span{color:var(--accent)}
+    nav{display:flex;gap:26px}
+    nav a{font-size:12px;font-weight:650;color:var(--muted);text-decoration:none}
+    nav a:hover{color:var(--accent)}
+    .intro{padding:clamp(68px,11vw,128px) 0 68px}
+    .kicker,.label{font:700 10px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+    .intro-grid{display:grid;grid-template-columns:minmax(0,1fr) 220px;align-items:end;gap:40px}
+    h1{margin:22px 0 20px;font:400 clamp(58px,10vw,112px)/.91 var(--serif);letter-spacing:-.075em}
+    h1 em{font-weight:400;color:var(--accent)}
+    .lead{max-width:580px;color:var(--muted);font-size:clamp(16px,2vw,19px);margin:0}
+    .portrait{aspect-ratio:4/5;display:grid;place-items:center;position:relative;background:#e6e2d8;border:1px solid var(--line);overflow:hidden}
+    .portrait:before,.portrait:after{content:"";position:absolute;border:1px solid rgba(32,42,38,.13);border-radius:50%;width:145%;aspect-ratio:1}
+    .portrait:after{width:105%}
+    .portrait span{font:italic 100px/.9 var(--serif);color:var(--accent);z-index:1}
+    .portrait small{position:absolute;bottom:12px;left:14px;font:700 9px var(--sans);letter-spacing:.13em;color:var(--muted)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:10px 16px;border:1px solid var(--ink);text-decoration:none;font-size:12px;font-weight:750;transition:background .15s,color .15s}
+    .button.primary{background:var(--ink);color:var(--paper)}
+    .button:hover{background:var(--accent);border-color:var(--accent);color:white}
+    .rule{border:0;border-top:1px solid var(--line);margin:0}
+    section{padding:48px 0 56px}
+    .section-top{display:grid;grid-template-columns:160px minmax(0,1fr);gap:24px;margin-bottom:28px}
+    h2{margin:0;font:400 clamp(30px,5vw,49px)/1.04 var(--serif);letter-spacing:-.045em}
+    .bio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+    .bio-item{padding:17px 0;border-bottom:1px solid var(--line)}
+    .bio-item:nth-child(odd){margin-right:28px}
+    .bio-item dt{font:700 10px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+    .bio-item dd{margin:0;font:400 22px/1.3 var(--serif)}
+    .note{margin:24px 0 0;color:var(--muted);font-size:12px}
+    .closing{padding:44px 0 56px;display:flex;justify-content:space-between;align-items:end;gap:28px}
+    .closing h2{max-width:590px}
+    .closing p{max-width:300px;color:var(--muted);font-size:13px}
+    footer{border-top:1px solid var(--line);padding:20px 0 28px}
+    .foot{display:flex;justify-content:space-between;gap:18px;align-items:center;color:var(--muted);font-size:11px}
+    .foot a{text-underline-offset:4px}
+    @media(max-width:700px){.wrap{width:calc(100% - 36px)}.topbar{min-height:68px}nav{gap:14px}nav a{font-size:11px}.intro{padding-top:66px}.intro-grid{grid-template-columns:1fr}.portrait{display:none}h1{font-size:clamp(58px,16vw,92px)}.section-top{grid-template-columns:1fr;gap:10px}.bio-grid{grid-template-columns:1fr}.bio-item:nth-child(odd){margin-right:0}.bio-item dd{font-size:21px}.closing{align-items:flex-start;flex-direction:column;gap:8px}.foot{align-items:flex-start;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Lewati ke konten utama</a>
-  <header class="site-header">
-    <div class="shell nav-wrap">
-      <a class="brand" href="#top" aria-label="Mikasa, kembali ke atas">
-        <span class="brand-mark" aria-hidden="true">M.</span>
-        <span>mikasa<span style="color:var(--accent)">/</span>nexus</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-        <span aria-hidden="true">☰</span><span>Menu</span>
-      </button>
-      <nav class="nav-links" id="primary-nav" aria-label="Navigasi utama" data-open="false">
-        <a href="#interests">Fokus</a>
-        <a href="#about">Tentang</a>
-        <a class="nav-cta" href="#contact">Terhubung ↗</a>
+  <a class="skip" href="#main">Lewati ke konten</a>
+  <header>
+    <div class="wrap topbar">
+      <a class="wordmark" href="#top" aria-label="Mikasa, ke atas">MIKASA<span>.</span></a>
+      <nav aria-label="Navigasi">
+        <a href="#biodata">Biodata</a>
+        <a href="#hello">Kontak</a>
       </nav>
     </div>
   </header>
-
   <main id="main">
-    <section class="hero shell" id="top" aria-labelledby="hero-title">
-      <p class="eyebrow">Personal digital space</p>
-      <h1 id="hero-title">Curious mind.<br><span class="accent">Quietly building.</span></h1>
-      <p class="hero-copy">Halo, aku Mikasa. Ini sudut kecilku di internet—tempat menyimpan minat, mencoba hal baru, dan merapikan ide menjadi sesuatu yang nyata.</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="https://github.com/ohmynexus" target="_blank" rel="noopener noreferrer">
-          Jelajahi GitHub <span aria-hidden="true">↗</span>
-        </a>
-        <a class="button button-secondary" href="#about">Kenali lebih dekat <span aria-hidden="true">↓</span></a>
-      </div>
-      <div class="hero-meta" aria-label="Ringkasan">
-        <span><i class="status-dot" aria-hidden="true"></i> Independent by nature</span>
-        <span>Curiosity → Creation</span>
-      </div>
-    </section>
-
-    <section class="section" id="interests" aria-labelledby="interests-title">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <p class="section-index">01 / CURRENT CURIOSITIES</p>
-            <h2 id="interests-title">Things I gravitate to.</h2>
-          </div>
-          <p class="section-intro">Beberapa area yang menjadi titik berangkat eksplorasi. Bukan daftar pencapaian—lebih seperti peta minat yang terus berubah.</p>
-        </div>
-        <div class="interest-grid">
-          <article class="interest-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg>
-            </div>
-            <h3>Digital craft</h3>
-            <p>Merancang pengalaman web yang terasa sederhana, terarah, dan menyenangkan untuk digunakan.</p>
-          </article>
-          <article class="interest-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>
-            </div>
-            <h3>Code & experiments</h3>
-            <p>Belajar lewat eksperimen kecil, memecahkan masalah, dan mengubah rasa ingin tahu menjadi prototipe.</p>
-          </article>
-          <article class="interest-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12"/><circle cx="12" cy="12" r="5"/></svg>
-            </div>
-            <h3>Curiosity, always</h3>
-            <p>Menjelajahi ide baru, menghubungkan titik-titik, dan tetap terbuka pada sudut pandang berbeda.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="shell about-layout">
+    <section class="intro wrap" id="top">
+      <div class="intro-grid">
         <div>
-          <p class="section-index">02 / A LITTLE ABOUT ME</p>
-          <h2 id="about-title">A work in progress.<br>By design.</h2>
+          <div class="kicker">Personal profile · Online edition</div>
+          <h1>Hi, I'm<br><em>Mikasa.</em></h1>
+          <p class="lead">Seorang pribadi yang suka menjelajahi ide, belajar hal baru, dan menemukan cara sederhana untuk membuat sesuatu yang berarti.</p>
+          <div class="actions">
+            <a class="button primary" href="https://github.com/ohmynexus" target="_blank" rel="noopener noreferrer">Kunjungi GitHub ↗</a>
+            <a class="button" href="#biodata">Lihat biodata ↓</a>
+          </div>
         </div>
-        <div class="about-copy">
-          <p>Aku percaya hal yang menarik sering dimulai dari pertanyaan yang sederhana. Ruang ini dibuat untuk mencatat proses—bukan hanya hasil akhirnya.</p>
-          <p>Identitasnya sengaja tetap minimal: kontras yang jelas, aksen cyan, dan sedikit nuansa terminal. Cukup karakter untuk terasa personal, tanpa mengorbankan keterbacaan.</p>
-          <div class="about-note">Catatan: ruang ini akan berkembang seiring hal-hal yang kupelajari dan kerjakan.</div>
-          <ul class="principles" aria-label="Prinsip personal">
-            <li><strong>Stay curious</strong><span>ASK BETTER QUESTIONS</span></li>
-            <li><strong>Make it useful</strong><span>LESS, BUT CLEARER</span></li>
-            <li><strong>Keep learning</strong><span>ITERATE WITH INTENT</span></li>
-          </ul>
+        <div class="portrait" aria-label="Monogram Mikasa, bukan foto profil" role="img">
+          <span>M.</span><small>PERSONAL / 001</small>
         </div>
       </div>
     </section>
-
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="shell">
-        <div class="contact-panel">
-          <p class="section-index">03 / OPEN TAB</p>
-          <h2 id="contact-title">Good ideas start with a hello.</h2>
-          <p>Ingin melihat kode, mengikuti eksperimen, atau sekadar menyapa? Temukan aku di GitHub.</p>
-          <a class="button button-primary" href="https://github.com/ohmynexus" target="_blank" rel="noopener noreferrer">Visit @ohmynexus <span aria-hidden="true">↗</span></a>
-          <div class="contact-foot">
-            <span>NO NOISE. JUST CURIOSITY.</span>
-            <span>© <span id="year">2026</span> MIKASA</span>
-          </div>
-        </div>
+    <hr class="rule">
+    <section class="wrap" id="biodata" aria-labelledby="bio-title">
+      <div class="section-top">
+        <p class="label">01 — The basics</p>
+        <h2 id="bio-title">A little about me.</h2>
+      </div>
+      <dl class="bio-grid">
+        <div class="bio-item"><dt>Nama panggilan</dt><dd>Mikasa</dd></div>
+        <div class="bio-item"><dt>Username</dt><dd>@ohmynexus</dd></div>
+        <div class="bio-item"><dt>Personal space</dt><dd>Digital & curious</dd></div>
+        <div class="bio-item"><dt>Currently</dt><dd>Learning as I go</dd></div>
+      </dl>
+      <p class="note">Profil singkat, tanpa terlalu banyak noise. Detail lain bisa ditambahkan sesuai informasi yang ingin dibagikan.</p>
+    </section>
+    <hr class="rule">
+    <section class="wrap closing" id="hello">
+      <div>
+        <p class="label">02 — Find me elsewhere</p>
+        <h2>Stay curious.<br>See you around.</h2>
+      </div>
+      <div>
+        <p>Untuk mengenal lebih jauh atau melihat aktivitas publikku, kunjungi GitHub.</p>
+        <a class="button primary" href="https://github.com/ohmynexus" target="_blank" rel="noopener noreferrer">github.com/ohmynexus ↗</a>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="shell footer-inner">
-      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">M.</span><span>mikasa<span style="color:var(--accent)">/</span>nexus</span></a>
-      <span>Designed with intention · Built for the open web</span>
-      <a href="https://github.com/ohmynexus" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-    </div>
-  </footer>
-
+  <footer><div class="wrap foot"><a class="wordmark" href="#top">MIKASA<span>.</span></a><span>© <span id="year">2026</span> · A small corner of the internet</span></div></footer>
   <script>
     (() => {
-      const toggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('#primary-nav');
-      const year = document.querySelector('#year');
+      const year = document.getElementById('year');
       if (year) year.textContent = String(new Date().getFullYear());
-      if (!toggle || !nav) return;
-
-      const closeMenu = () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        nav.dataset.open = 'false';
-      };
-
-      toggle.addEventListener('click', () => {
-        const open = toggle.getAttribute('aria-expanded') !== 'true';
-        toggle.setAttribute('aria-expanded', String(open));
-        nav.dataset.open = String(open);
-      });
-
-      nav.addEventListener('click', (event) => {
-        if (event.target instanceof HTMLAnchorElement) closeMenu();
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeMenu();
-          toggle.focus();
-        }
-      });
     })();
   </script>
 </body>
