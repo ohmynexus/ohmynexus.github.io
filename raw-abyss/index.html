@@ -10,7 +10,11 @@
 <script>
 // Add authorized audio files in assets/audio/ and register their paths below.
 const TRACKS=[
- // {title:"Track name",artist:"Artist",genre:"Metalcore",src:"assets/audio/track-name.mp3"},
+ {title:"To the Hellfire",artist:"Lorna Shore",genre:"Deathcore",src:"assets/audio/to-the-hellfire-lorna-shore.flac"},
+ {title:"Kingslayer (feat. BABYMETAL)",artist:"Bring Me The Horizon, BABYMETAL",genre:"Metalcore",src:"assets/audio/kingslayer-bring-me-the-horizon-babymetal.flac"},
+ {title:"King For A Day",artist:"Pierce The Veil, Kellin Quinn",genre:"Metalcore",src:"assets/audio/king-for-a-day-pierce-the-veil-kellin-quinn.flac"},
+ {title:"Babayka",artist:"Slaughter to Prevail",genre:"Deathcore",src:"assets/audio/babayka-slaughter-to-prevail.flac"},
+ {title:"Gunslinger",artist:"Avenged Sevenfold",genre:"Heavy metal",src:"assets/audio/gunslinger-avenged-sevenfold.flac"}
 ];
 const $=id=>document.getElementById(id),audio=$('audio');let current=-1,filter='all';
 for(let i=0;i<40;i++){let e=document.createElement('i');e.style.setProperty('--h',(12+Math.abs(Math.sin(i*2.3))*85)+'%');$('bars').append(e)}
